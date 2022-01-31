@@ -4,4 +4,4 @@
 using SnakeAndLadder;
 
 PlayerPosition playerPosition = new PlayerPosition();
-playerPosition.playerRolledDie();
+playerPosition.checkingForOption();
