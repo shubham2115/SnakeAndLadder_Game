@@ -3,5 +3,5 @@
 
 using SnakeAndLadder;
 
-PlayerPosition playerPosition = new PlayerPosition();
-playerPosition.checkingForOption();
+WinningPosition playerPosition = new WinningPosition();
+playerPosition.winPosition(); 
