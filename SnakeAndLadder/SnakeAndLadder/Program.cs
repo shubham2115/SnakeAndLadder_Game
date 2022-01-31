@@ -3,5 +3,5 @@
 
 using SnakeAndLadder;
 
-WiningPositionAndDiceCount playerPosition = new WiningPositionAndDiceCount();
-playerPosition.diceCountToWinTheGame(); 
+TwoPlayerGameToWinTheGame playerPosition = new TwoPlayerGameToWinTheGame();
+playerPosition.playGame(); 
