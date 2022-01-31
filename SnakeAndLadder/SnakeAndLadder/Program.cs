@@ -4,4 +4,4 @@
 using SnakeAndLadder;
 
 PlayerPosition playerPosition = new PlayerPosition();
-playerPosition.GAME();
+playerPosition.playerRolledDie();

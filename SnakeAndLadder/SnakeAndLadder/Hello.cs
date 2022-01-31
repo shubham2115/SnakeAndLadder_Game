@@ -8,12 +8,14 @@ namespace SnakeAndLadder
 {
     public class PlayerPosition
     {
-        int POSITION=0;
-        public void GAME()
+        public void playerRolledDie()
         {
-            Console.WriteLine("LETS START THE GAME");
-            Console.WriteLine("PLAYER AT POSITION " +POSITION);
-            Console.ReadLine();
+            Console.WriteLine("Snake And Ladder");
+            Random random = new Random();
+            int player = random.Next(0, 6) + 1;
+            Console.WriteLine("Outcome is : " + player);
         }
     }
 }
+
+   
