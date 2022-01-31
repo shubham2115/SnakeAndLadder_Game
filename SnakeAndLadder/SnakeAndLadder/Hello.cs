@@ -6,29 +6,33 @@ using System.Threading.Tasks;
 
 namespace SnakeAndLadder
 {
-    class WiningPositionAndDiceCount
+    class TwoPlayerGameToWinTheGame
     {
+        //Constant
         public const int POSITION = 0;
         public const int WINNING_POSITION = 100;
-        public void diceCountToWinTheGame()
+        public void playGame()
         {
+            //Variable
+            int dieCountForPlayer1 = 0;
+            int dieCountForPlayer2 = 0;
+            int positionForPlayer1 = 0;
+            int positionForPlayer2 = 0;
             int position = 0;
-            int diceCount = 0;
-            Console.WriteLine("Snake And Ladder Game ");
+
             Random random = new Random();
+            int player = random.Next(0, 6) + 1;
             Random random1 = new Random();
-            while (position != WINNING_POSITION)
+            int option = random1.Next(1, 3) + 1;
+
+            Console.WriteLine("Snake And Ladder Game");
+            while (dieCountForPlayer1 != WINNING_POSITION && dieCountForPlayer2 != WINNING_POSITION)
             {
-                diceCount++;
-                int player = random.Next(0, 6) + 1;
-                Console.WriteLine("Outcomes is : " + player);
-                int option = random1.Next(0, 3) + 1;
+                dieCountForPlayer1++;
                 switch (option)
                 {
                     case 1:
-                        Console.WriteLine("Current position is: " + position);
-                        Console.WriteLine("You stay in same position: " + position);
-
+                        Console.WriteLine("Player stay at the same position");
                         break;
                     case 2:
                         Console.WriteLine("Your current position is:" + position);
@@ -44,23 +48,53 @@ namespace SnakeAndLadder
                         }
                         break;
                     case 3:
-                        Console.WriteLine("You encountered a Snake");
-                        Console.WriteLine("Current position is:" + position);
-                        if (position < 0)
-                        {
-                            Console.WriteLine("Player snake moves bheind:" + POSITION);
-                            position = POSITION;
-                        }
-                        else
+                        if (position > player)
                         {
                             position = position - player;
-                            Console.WriteLine("Player moves behind :" + position);
                         }
                         break;
                 }
-                Console.WriteLine("Dice count : " + diceCount);
+                positionForPlayer1 = position;
+                Console.WriteLine("player 1 die count " + dieCountForPlayer1 + ": Position" + positionForPlayer1);
+                dieCountForPlayer2++;
+                switch (option)
+                {
+                    case 1:
+                        Console.WriteLine("Player stay at the same position");
+                        break;
+                    case 2:
+                        Console.WriteLine("Your current position is:" + position);
+                        Console.WriteLine("You encountered a ladder");
+                        if ((position + player) > 100)
+                        {
+                            Console.WriteLine("Current position is:" + position);
+                        }
+                        else
+                        {
+                            position = position + player;
+                            Console.WriteLine("Player ladder moves ahead:" + position);
+                        }
+                        break;
+                    case 3:
+                        if (position > player)
+                        {
+                            position = position - player;
+                        }
+                        break;
+                }
+                positionForPlayer2 = position;
+                Console.WriteLine("player 2 die count" + dieCountForPlayer2 + ": Position" + positionForPlayer2);
+            }
+            if (positionForPlayer1 == WINNING_POSITION)
+            {
+                Console.WriteLine("Player1 won the game, You rolled the die " + dieCountForPlayer1 + " times");
+            }
+            else
+            {
+                Console.WriteLine("Player2 won the game, You rolled the die " + dieCountForPlayer2 + " times");
             }
         }
+        
     }
 }
 
