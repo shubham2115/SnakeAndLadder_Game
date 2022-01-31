@@ -6,51 +6,60 @@ using System.Threading.Tasks;
 
 namespace SnakeAndLadder
 {
-    class WinningPosition
-    {
-        public const int POSITION = 0;
-        public void winPosition()
+        class ExactWinningPosition
         {
-            int position = 0, ladderCount = 0, snakeCount = 0;
-            Console.WriteLine("Snake And Ladeer Game ");
-            Random random = new Random();
-            int player = random.Next(0, 6) + 1;
-            Console.WriteLine("Outcome is : " + player);
-            Random random1 = new Random();
-            while (position != 100)
+            public const int POSITION = 0;
+            public const int WINNING_POSITION = 100;
+            public void exactWinPosition()
             {
-                int option = random1.Next(1, 3) + 1;
-                switch (option)
+                int position = 0;
+                Random random = new Random();
+                Random random1 = new Random();
+                Console.WriteLine("Snake And Ladder Game ");
+                while (position != WINNING_POSITION)
                 {
-                    case 1:
-                        Console.WriteLine("your current position : " + position);
-                        Console.WriteLine("you stay in same position : " + position);
-                        break;
-                    case 2:
-                        ladderCount++;
-                        Console.WriteLine("current poition is : " + position);
-                        position = position + player;
-                        Console.WriteLine("Player ladder moves ahead : " + position);
-                        break;
-                    case 3:
-                        snakeCount++;
-                        Console.WriteLine("Current position is : " + position);
-                        position = position - player;
-                        if (position < 0)
-                        {
-                            Console.WriteLine("Player snake move behind : " + POSITION);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Player moves behind :" + position);
-                        }
-                        break;
-                }
+                    int player = random.Next(0, 6) + 1;
+                    Console.WriteLine("Outcomes is : " + player);
+                    int option = random1.Next(1, 3) + 1;
+                    switch (option)
+                    {
+                        case 1:
+                            Console.WriteLine("Current position is: " + position);
+                            Console.WriteLine("You stay in same position: " + position);
 
+                            break;
+                        case 2:
+                            Console.WriteLine("Your current position is:" + position);
+                            Console.WriteLine("You encountered a ladder");
+                            if ((position + player) > 100)
+                            {
+                                Console.WriteLine("Current position is:" + position);
+                            }
+                            else
+                            {
+                                position = position + player;
+                                Console.WriteLine("Player ladder moves ahead:" + position);
+                            }
+                            break;
+                        case 3:
+                            Console.WriteLine("You encountered a Snake");
+                            Console.WriteLine("Current position is:" + position);
+                            if (position < 0)
+                            {
+                                Console.WriteLine("Player snake moves bheind:" + POSITION);
+                                position = POSITION;
+                            }
+                            else
+                            {
+                                position = position - player;
+                                Console.WriteLine("Player moves behind :" + position);
+                            }
+                            break;
+                    }
+                }
             }
         }
-    }
 
 
+    
 }
-   

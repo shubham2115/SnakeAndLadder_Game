@@ -3,5 +3,5 @@
 
 using SnakeAndLadder;
 
-WinningPosition playerPosition = new WinningPosition();
-playerPosition.winPosition(); 
+ExactWinningPosition playerPosition = new ExactWinningPosition();
+playerPosition.exactWinPosition(); 
